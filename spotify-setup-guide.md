@@ -11,7 +11,7 @@ Setup with a click of a button 😉
 1. Sign up or Sign in to use [Vercel](https://vercel.com/) for hosting the repo. You could use another service like [Heroku](https://heroku.com/) but this guide will use Vercel
 2. Fork [natemoo-re's original repo](https://github.com/natemoo-re/natemoo-re), or [joshlmao's now-playing-profile repo](https://github.com/JoshLmao/now-playing-profile) which is just a skeleton repo that contains the Spotify Now Playing specific features
 3. Go to your Vercel dashboard and select Import Project
-4. Paste the Git url of your forked repo. For example "https://github.com/JoshLmao/now-playing-profile"
+4. Paste the Git URL of your forked repo. For example "https://github.com/JoshLmao/now-playing-profile"
    <img src="https://i.imgur.com/fkiH4QL.png" height="250">
 
 5. Leave the remaining settings for now and click 'Deploy'
@@ -26,18 +26,20 @@ Setup with a click of a button 😉
 
 3. Next, we need to do a [Authoration Code flow](https://developer.spotify.com/documentation/general/guides/authorization-guide/#authorization-code-flow) auth request to retrieve a Refresh Token.
 
-   - Replace "MY_CLIENT_ID" in the following url with your Client ID from your Spotify Dashboard and paste the url in your browser. Your client id and secret id can be found in your dashboard, pic below
+   - Replace "MY_CLIENT_ID" in the following URL with your Client ID from your Spotify Dashboard and paste the URL in your browser. Your client id and secret id can be found in your dashboard, pic below
 
    https://accounts.spotify.com/authorize?client_id=MY_CLIENT_ID&response_type=code&redirect_uri=https%3A%2F%2Flocalhost%3A3000%2Fcallback&scope=user-read-playback-state%20user-read-currently-playing
    <img src="https://i.imgur.com/VzY5Uxv.png" >
 
-   - Once done, you will get a blank page with a different url which is like "https://localhost:3000/callback?code=MY_CODE"
+   - Once done, you will get a blank page with a different URL which is like "https://localhost:3000/callback?code=MY_CODE"
 
    - Next, navigate to [Base64Encode](https://www.base64encode.org/) and insert your client id and secret id **separated with a colon**. For example, "CLIENT_ID:SECRET_ID"
 
    - Then, insert your **base 64 encoded string** and **code** from the previous steps in the following command and press enter to run.
 
-   curl -H "Authorization: Basic MY_BASE_64_STRING" -d grant_type=authorization_code -d code=MY_SPOTIFY_CODE -d redirect_uri=https%3A%2F%2Flocalhost%3A3000%2Fcallback https://accounts.spotify.com/api/token
+   ```bash
+   curl -H "Authorization: Basic MY_BASE_64_STRING" -d grant_type=authorization_code -d code=MY_CODE -d redirect_uri=https%3A%2F%2Flocalhost%3A3000%2Fcallback https://accounts.spotify.com/api/token
+   ```
 
    <img src="https://i.imgur.com/tnaCoqj.png">
 
@@ -59,9 +61,9 @@ Name: SPOTIFY_REFRESH_TOKEN
 Value: MY_REFRESH_TOKEN
 ```
 
-6. Once done, navigate to one of your deployment url's and place "/now-playing" at the end. For example, "https://now-playing-joshlmao.vercel.app/now-playing"
+6. Once done, navigate to one of your deployment URL's and place "/now-playing" at the end. For example, "https://now-playing-joshlmao.vercel.app/now-playing"
 
-7. Replace "MY_VERCEL_DEPLOYMENT_URL" in the following code with one of your deployment url's and insert it into any ReadMe.md
+7. Replace "MY_VERCEL_DEPLOYMENT_URL" in the following code with one of your deployment URL's and insert it into any ReadMe.md
 
 ```
 <a href="https://MY_VERCEL_DEPLOYMENT_URL/now-playing?open">
