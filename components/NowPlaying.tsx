@@ -25,7 +25,7 @@ export const Player: React.FC<Props> = ({
         {`
             .paused { 
               animation-play-state: paused !important;
-              background: #e1e4e8 !important;
+              background: #007EC6 !important;
             }
 
             img:not([src]) {
@@ -59,7 +59,7 @@ export const Player: React.FC<Props> = ({
               width: 100%;
               height: 6px;
               transform-origin: left center;
-              background-color: #0000ff;
+              background-color: #007EC6;
               animation: progress ${duration}ms linear;
               animation-delay: -${progress}ms;
             }
@@ -147,7 +147,7 @@ export const Player: React.FC<Props> = ({
           <Text id="track" weight="bold">
             {`${track ?? ""} `.trim()}
           </Text>
-          <Text id="artist" color={!track ? "light-blue" : undefined}>
+          <Text id="artist">
             {artist || "Nothing playing..."}
           </Text>
           {track && (
